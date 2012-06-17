@@ -11,6 +11,26 @@ Gem::Specification.new do |s|
   s.authors = ["davebenvenuti"]
   s.date = "2012-06-17"
   s.email = "davebenvenuti@gmail.com"
+  s.extra_rdoc_files = [
+    "README.md"
+  ]
+  s.files = [
+    "Gemfile",
+    "Gemfile.lock",
+    "README.md",
+    "Rakefile",
+    "VERSION",
+    "lib/resque-uuid.rb",
+    "lib/resque/plugins/resque_uuid.rb",
+    "lib/resque/plugins/resque_uuid/job_extensions.rb",
+    "lib/resque/plugins/resque_uuid/resque_extensions.rb",
+    "resque-uuid.gemspec",
+    "test/redis-test.conf",
+    "test/resque/plugins/resque_uuid/job_extensions_test.rb",
+    "test/resque/plugins/resque_uuid/resque_extensions_test.rb",
+    "test/resque/plugins/resque_uuid_test.rb",
+    "test/test_helper.rb"
+  ]
   s.homepage = "http://github.com/davebenvenuti/resque-uuid"
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.15"
