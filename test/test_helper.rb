@@ -5,7 +5,7 @@ require 'resque'
 
 TEST_DIR_BASE = File.dirname(File.expand_path(__FILE__))
 
-require File.expand_path(File.join(TEST_DIR_BASE, '/../resque-uuid'))
+require File.expand_path(File.join(TEST_DIR_BASE, '/../lib/resque-uuid'))
 
 #
 # make sure we can run redis.  we run an actual redis-server to enqure resque push/pop still works properly
