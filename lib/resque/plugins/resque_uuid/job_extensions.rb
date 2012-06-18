@@ -4,7 +4,7 @@ module Resque
 
       module JobExtensions
         def uuid
-          self.payload['uuid']
+          self.payload[:uuid] || self.payload['uuid']
         end
       end
 
