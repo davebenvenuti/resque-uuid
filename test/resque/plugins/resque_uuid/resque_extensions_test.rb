@@ -40,22 +40,18 @@ class ResqueExtensionsTest < Test::Unit::TestCase
     test_uuid = UUIDTools::UUID.random_create
     UUIDTools::UUID.stubs(:random_create).returns(test_uuid)
 
-    fake_payload = { 'payload' => 'blah' }
+    Resque.push :my_queue, { :payload => 'blah' }
 
-    Resque.push :my_queue, fake_payload
-
-    assert_equal fake_payload.merge('uuid' => test_uuid.to_s), Resque.pop(:my_queue)
+    assert_equal({ 'payload' => 'blah', 'uuid' => test_uuid.to_s }, Resque.pop(:my_queue))
   end
 
   should "call after_uuid_generated method defined on payload class" do
     test_uuid = UUIDTools::UUID.random_create
     UUIDTools::UUID.stubs(:random_create).returns(test_uuid)
 
-    fake_payload = { 'class' => FakeJobClass.to_s, 'args' => [1,2,3] }
+    Resque.push :my_queue, { :class => FakeJobClass.to_s, :args => [1,2,3] }
 
-    Resque.push :my_queue, fake_payload
-
-    assert_equal fake_payload.merge('uuid' => test_uuid.to_s), Resque.pop(:my_queue)
+    assert_equal({ 'class' => FakeJobClass.to_s, 'args' => [1,2,3], 'uuid' => test_uuid.to_s }, Resque.pop(:my_queue))
     assert_equal test_uuid.to_s, FakeJobClass.passed_uuid
     assert_equal [1,2,3], FakeJobClass.passed_args
   end
@@ -64,13 +60,11 @@ class ResqueExtensionsTest < Test::Unit::TestCase
     test_uuid = UUIDTools::UUID.random_create
     UUIDTools::UUID.stubs(:random_create).returns(test_uuid)
 
-    fake_payload = { 'class' => FakeJobClassNoUUIDCallback.to_s }
-
     assert_nothing_raised do
-      Resque.push :my_queue, fake_payload
+      Resque.push :my_queue, { :class => FakeJobClassNoUUIDCallback.to_s }
     end
 
-    assert_equal fake_payload.merge('uuid' => test_uuid.to_s), Resque.pop(:my_queue)
+    assert_equal({ 'class' => FakeJobClassNoUUIDCallback.to_s, 'uuid' => test_uuid.to_s }, Resque.pop(:my_queue))
   end
 
 end
