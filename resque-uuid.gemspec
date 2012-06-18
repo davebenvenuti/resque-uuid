@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "resque-uuid"
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["davebenvenuti"]
-  s.date = "2012-06-17"
+  s.date = "2012-06-18"
   s.email = "davebenvenuti@gmail.com"
   s.extra_rdoc_files = [
     "README.md"
@@ -24,10 +24,12 @@ Gem::Specification.new do |s|
     "lib/resque/plugins/resque_uuid.rb",
     "lib/resque/plugins/resque_uuid/job_extensions.rb",
     "lib/resque/plugins/resque_uuid/resque_extensions.rb",
+    "lib/resque/plugins/resque_uuid/util.rb",
     "resque-uuid.gemspec",
     "test/redis-test.conf",
     "test/resque/plugins/resque_uuid/job_extensions_test.rb",
     "test/resque/plugins/resque_uuid/resque_extensions_test.rb",
+    "test/resque/plugins/resque_uuid/util_test.rb",
     "test/resque/plugins/resque_uuid_test.rb",
     "test/test_helper.rb"
   ]
